@@ -38,7 +38,7 @@ export const Skills = () => {
               </p>
               <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                 <div className="item">
-                  <CircularMeter value={85} />
+                  <CircularMeter value={75} />
                   <h5>C++</h5>
                 </div>
 

@@ -62,14 +62,14 @@ export const Banner = () => {
                   <span className="tagline">Welcome to my Portfolio</span>
 
                   <h1>
-                    {`Hi! I'm Ayush`}{" "}
+                    {`Hi! I'm Dhruv`}{" "}
                     <span className="txt-rotate">
                       <span className="wrap">{text}</span>
                     </span>
                   </h1>
 
                   <p>
-                    Computer Science Student & Software Developer.
+                    Information Technology Student & Software Developer.
                     Passionate about building efficient software,
                     exploring new technologies, and improving problem-solving skills.
                   </p>

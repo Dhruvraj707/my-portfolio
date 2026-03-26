@@ -6,15 +6,17 @@ import TrackVisibility from 'react-on-screen';
 import emailjs from 'emailjs-com';
 
 export const Contact = () => {
+
   const formInitialDetails = {
     user_name: '',
     user_email: '',
+    user_phone: '',
     message: ''
   }
 
   const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [buttonText, setButtonText] = useState('Send');
-  const [status, setStatus] = useState({});
+  const [buttonText, setButtonText] = useState('Send Message');
+  const [status, setStatus] = useState(null);
 
   const onFormUpdate = (category, value) => {
     setFormDetails({
@@ -23,9 +25,19 @@ export const Contact = () => {
     })
   }
 
-  // ✅ NEW EmailJS function
+  const handlePhoneChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    onFormUpdate('user_phone', value);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (formDetails.user_phone.length < 10) {
+      setStatus({ success: false, message: "Enter valid phone number" });
+      return;
+    }
+
     setButtonText("Sending...");
 
     emailjs.send(
@@ -34,36 +46,37 @@ export const Contact = () => {
       formDetails,
       process.env.REACT_APP_PUBLIC_KEY
     )
-      .then(() => {
-        setStatus({ success: true, message: 'Message sent successfully ✅' });
-        setButtonText("Send");
-        setFormDetails(formInitialDetails);
-      })
-      .catch((error) => {
-        console.log(error);
-        setStatus({ success: false, message: 'Something went wrong ❌' });
-        setButtonText("Send");
-      });
+    .then(() => {
+      setStatus({ success: true, message: "Message sent successfully ✅" });
+      setButtonText("Send Message");
+      setFormDetails(formInitialDetails);
+    })
+    .catch(() => {
+      setStatus({ success: false, message: "Something went wrong ❌" });
+      setButtonText("Send Message");
+    });
   };
+
+
 
   return (
     <section className="contact" id="connect">
       <Container>
         <Row className="align-items-center">
 
-          <Col size={12} md={6}>
+          <Col md={6}>
             <TrackVisibility>
               {({ isVisible }) =>
                 <img
                   className={isVisible ? "animate__animated animate__zoomIn" : ""}
                   src={contactImg}
-                  alt="Contact illustration"
+                  alt="Contact"
                 />
               }
             </TrackVisibility>
           </Col>
 
-          <Col size={12} md={6}>
+          <Col md={6}>
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
@@ -76,8 +89,6 @@ export const Contact = () => {
                       <Col xs={12}>
                         <input
                           type="text"
-                          name="user_name"
-                          className="form-input"
                           placeholder="Your Name"
                           value={formDetails.user_name}
                           onChange={(e) => onFormUpdate('user_name', e.target.value)}
@@ -88,8 +99,6 @@ export const Contact = () => {
                       <Col xs={12}>
                         <input
                           type="email"
-                          name="user_email"
-                          className="form-input"
                           placeholder="Your Email"
                           value={formDetails.user_email}
                           onChange={(e) => onFormUpdate('user_email', e.target.value)}
@@ -98,31 +107,37 @@ export const Contact = () => {
                       </Col>
 
                       <Col xs={12}>
+                        <input
+                          type="text"
+                          placeholder="Phone Number"
+                          value={formDetails.user_phone}
+                          onChange={handlePhoneChange}
+                          maxLength="10"
+                          required
+                        />
+                      </Col>
+
+                      <Col xs={12}>
                         <textarea
                           rows="5"
-                          name="message"
-                          className="form-textarea"
-                          placeholder="Write your message..."
+                          placeholder="Message"
                           value={formDetails.message}
                           onChange={(e) => onFormUpdate('message', e.target.value)}
                           required
                         />
                       </Col>
 
-                      <Col xs={12} className="text-center">
-                        <button type="submit" className="form-btn">
-                          {buttonText}
-                        </button>
-                      </Col>
+                      <button type="submit">
+                        <span>{buttonText}</span>
+                      </button>
 
-                      {
-                        status.message &&
-                        <Col xs={12}>
-                          <p className={status.success ? "success" : "danger"}>
+                      {status && (
+                        <Col>
+                          <p className={status.success ? "success" : "error"}>
                             {status.message}
                           </p>
                         </Col>
-                      }
+                      )}
 
                     </Row>
                   </form>
