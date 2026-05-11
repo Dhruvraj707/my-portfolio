@@ -10,7 +10,7 @@ import {
   BrowserRouter as Router
 } from "react-router-dom"; 
 
-export const NavBar = () => {
+export const NavBar = ({ toggleTheme, theme}) => {
 
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
@@ -60,6 +60,11 @@ export const NavBar = () => {
               <HashLink to='#connect'>
                 <button className="vvd"><span>Let’s Connect</span></button>
               </HashLink>
+
+              <button onClick={toggleTheme} className="theme-btn">
+                {theme === "light" ? "🌙" : "☀️"}
+              </button>
+
             </span>
           </Navbar.Collapse>
         </Container>

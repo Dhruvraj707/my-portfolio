@@ -21,7 +21,7 @@ export const Footer = () => {
               <a href="https://www.instagram.com/drs.707/?__pwa=1" target="blank"><img src={navIcon3} alt="Icon" /></a>
               <a href="https://github.com/Dhruvraj707" target="blank"><img src={navIcon4} alt="Icon" /></a>
             </div>
-            <p>Copyright 2022. All Rights Reserved</p>
+            <p>Copyright 2026. All Rights Reserved</p>
           </Col>
         </Row>
       </Container>

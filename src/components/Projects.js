@@ -30,14 +30,14 @@ export const Projects = () => {
       title: "Card-Sequence Validator",
       description: "Design & Development",
       imgUrl: projImg1,
-      projurl: "https://github.com/AyushRaj1329/Dual-Head-Card-Sequence-Validator/",
+      // projurl: "https://github.com/AyushRaj1329/Dual-Head-Card-Sequence-Validator/",
     },
 
     {
       title: "OMP-Portfolio",
       description: "Design & Development",
       imgUrl: projImg3,
-      projurl: "https://github.com/AyushRaj1329/OMP-Portfolio-website/",
+      // projurl: "https://github.com/AyushRaj1329/OMP-Portfolio-website/",
     },
 
   ];
@@ -47,28 +47,28 @@ export const Projects = () => {
       title: "Frontend Clone",
       description: "React Understanding",
       imgUrl: projImg1,
-      projurl: "https://ochi-website-clone-seven.vercel.app/",
+      // projurl: "https://ochi-website-clone-seven.vercel.app/",
     },
 
     {
       title: "Currency-Converter",
       description: "API Understanding",
       imgUrl: projImg1,
-      projurl: "https://ayushraj1329.github.io/Currency-Converter/",
+      // projurl: "https://ayushraj1329.github.io/Currency-Converter/",
     },
 
     {
       title: "Stone Paper Scissors",
       description: "JavaScript Understanding",
       imgUrl: projImg1,
-      projurl: "https://ayushraj1329.github.io/stone-paper-scissors-/",
+      // projurl: "https://ayushraj1329.github.io/stone-paper-scissors-/",
     },
 
     {
       title: "Tic Tac Toe",
       description: "JavaScript Understanding",
       imgUrl: projImg1,
-      projurl: "https://ayushraj1329.github.io/tic-tac-toe/",
+      // projurl: "https://ayushraj1329.github.io/tic-tac-toe/",
     },
 
   ];
